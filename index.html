@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>O Reset Feminino - Livro Digital</title>
+    <title>O Protocolo da Presença - Edição Completa</title>
     
-    <!-- Importando Fontes (Mesmas do site de vendas) -->
+    <!-- Importando Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -14,7 +14,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
     <style>
-        /* --- MANUTENÇÃO DO DESIGN SYSTEM --- */
+        /* --- DESIGN SYSTEM (Mantido Original) --- */
         :root {
             --primary-red: #c8102e; 
             --dark-text: #1a1a1a;
@@ -34,14 +34,14 @@
         body {
             font-family: var(--font-main);
             color: var(--dark-text);
-            line-height: 1.8; /* Leitura mais confortável */
+            line-height: 1.8;
             background-color: var(--bg-offwhite);
             font-size: 16px;
         }
 
         h1, h2, h3, h4 { font-family: var(--font-serif); color: #000; }
         
-        /* --- HEADER SIMPLIFICADO --- */
+        /* HEADER */
         header {
             background: #fff;
             padding: 20px;
@@ -55,17 +55,17 @@
         .logo { font-size: 1.2rem; color: var(--primary-red); font-weight: 700; letter-spacing: -0.5px; }
         .logo span { color: var(--dark-text); font-weight: 400; }
 
-        /* --- LAYOUT DO LEITOR --- */
+        /* READER LAYOUT */
         .reader-container {
             max-width: 1200px;
-            margin: 80px auto 40px auto; /* Espaço para o header fixo */
+            margin: 80px auto 40px auto;
             display: grid;
             grid-template-columns: 300px 1fr;
             gap: 40px;
             padding: 20px;
         }
 
-        /* --- SIDEBAR / SUMÁRIO --- */
+        /* SIDEBAR / TOC */
         .sidebar {
             position: sticky;
             top: 100px;
@@ -74,6 +74,11 @@
             padding-right: 20px;
             border-right: 1px solid #eee;
         }
+        /* Custom Scrollbar for Sidebar */
+        .sidebar::-webkit-scrollbar { width: 5px; }
+        .sidebar::-webkit-scrollbar-thumb { background: #eee; border-radius: 5px; }
+        .sidebar::-webkit-scrollbar-thumb:hover { background: var(--primary-red); }
+
         .toc-title {
             font-size: 0.9rem;
             text-transform: uppercase;
@@ -82,42 +87,38 @@
             margin-bottom: 20px;
             font-weight: 600;
         }
+        .toc-section-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
         .toc-list li { margin-bottom: 12px; }
         .toc-list a {
             color: var(--light-text);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: color 0.3s;
             display: block;
             line-height: 1.4;
         }
         .toc-list a:hover { color: var(--primary-red); }
-        .toc-list a.active { color: var(--primary-red); font-weight: 600; }
         .toc-chapter-num { font-size: 0.75rem; color: #ccc; margin-right: 5px; font-family: var(--font-serif); }
 
-        /* --- CONTEÚDO DO LIVRO --- */
+        /* CONTENT */
         .book-content {
             background: #fff;
             padding: 60px;
             box-shadow: 0 5px 30px rgba(0,0,0,0.03);
             border-radius: 8px;
-            max-width: 800px; /* Largura ideal de leitura */
+            max-width: 800px;
         }
 
-        /* --- TIPOGRAFIA DO LIVRO --- */
-        .book-title {
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
-        .book-subtitle {
-            text-align: center;
-            color: var(--light-text);
-            font-size: 1.1rem;
-            font-style: italic;
-            margin-bottom: 60px;
-            font-family: var(--font-serif);
-        }
+        /* TYPOGRAPHY */
+        .book-title { font-size: 3rem; text-align: center; margin-bottom: 10px; line-height: 1.2; }
+        .book-subtitle { text-align: center; color: var(--light-text); font-size: 1.1rem; font-style: italic; margin-bottom: 60px; font-family: var(--font-serif); }
 
         .chapter { margin-bottom: 80px; padding-top: 40px; border-top: 1px solid transparent; }
         .chapter-header { text-align: center; margin-bottom: 40px; }
@@ -134,7 +135,6 @@
         p { margin-bottom: 20px; color: #444; font-weight: 300; }
         strong { font-weight: 600; color: #000; }
         
-        /* Drop Cap (Primeira letra grande) */
         .drop-cap::first-letter {
             float: left;
             font-family: var(--font-serif);
@@ -145,7 +145,7 @@
             color: var(--primary-red);
         }
 
-        /* --- ELEMENTOS ESPECIAIS --- */
+        /* COMPONENTS */
         .highlight-box {
             background-color: var(--bg-blush);
             padding: 30px;
@@ -158,6 +158,14 @@
         .highlight-box li { position: relative; padding-left: 20px; margin-bottom: 10px; font-size: 0.95rem; }
         .highlight-box li::before { content: "•"; color: var(--primary-red); position: absolute; left: 0; font-weight: bold; }
 
+        .recipe-title {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            color: var(--primary-red);
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+
         .quote {
             font-family: var(--font-serif);
             font-size: 1.4rem;
@@ -165,38 +173,32 @@
             font-style: italic;
             color: #000;
             margin: 40px 0;
-            padding: 0 20px;
+            padding: 30px 20px;
             border-top: 1px solid #eee;
             border-bottom: 1px solid #eee;
-            padding: 30px 0;
+            background: #fafafa;
         }
 
-        .checklist-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-            background: var(--bg-contrast);
-            padding: 15px;
-            border-radius: 6px;
+        .checklist-day {
+            margin-bottom: 20px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 20px;
         }
-        .check-circle {
-            min-width: 20px; height: 20px; border: 2px solid #ccc; border-radius: 50%;
-        }
+        .checklist-day h4 { font-size: 1.1rem; margin-bottom: 10px; color: var(--dark-text); }
+        .check-item { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; font-size: 0.9rem; }
+        .check-box { width: 18px; height: 18px; border: 1px solid #ccc; border-radius: 3px; flex-shrink: 0; margin-top: 4px; }
 
-        /* --- MOBILE --- */
+        /* MOBILE */
         @media (max-width: 900px) {
             .reader-container { grid-template-columns: 1fr; padding: 10px; margin-top: 60px; }
-            .sidebar { display: none; } /* Oculta sumário lateral em mobile para focar na leitura */
+            .sidebar { display: none; } 
             .book-content { padding: 30px 20px; }
             .book-title { font-size: 2.2rem; }
             .chapter h2 { font-size: 1.8rem; }
-            
-            /* Sumário Mobile no topo */
             .mobile-toc { display: block; background: var(--bg-contrast); padding: 20px; margin-bottom: 30px; border-radius: 8px; }
             .mobile-toc h3 { font-size: 1rem; margin-bottom: 15px; }
-            .mobile-toc ul { display: grid; grid-template-columns: 1fr; gap: 10px; }
-            .mobile-toc a { font-size: 0.85rem; padding: 5px 0; border-bottom: 1px dashed #ddd; display: block; }
+            .mobile-toc ul { list-style: none; }
+            .mobile-toc a { font-size: 0.85rem; padding: 8px 0; border-bottom: 1px dashed #ddd; display: block; }
         }
         @media (min-width: 901px) { .mobile-toc { display: none; } }
     </style>
@@ -204,218 +206,356 @@
 <body>
 
     <header>
-        <div class="logo">divinely<span>feminine</span> | <span style="font-size: 0.8rem; color: #999; text-transform: uppercase; letter-spacing: 1px;">Área de Leitura</span></div>
+        <div class="logo">presence<span>protocol</span> | <span style="font-size: 0.8rem; color: #999; text-transform: uppercase; letter-spacing: 1px;">Masterclass Digital</span></div>
     </header>
 
     <div class="reader-container">
         
-        <!-- SIDEBAR (Desktop) -->
+        <!-- SIDEBAR (ÍNDICE LATERAL) -->
         <aside class="sidebar">
             <div class="toc-title">Índice</div>
+            
+            <div class="toc-section-title">PARTE I: A MENTALIDADE</div>
             <ul class="toc-list">
-                <li><a href="#intro"><span class="toc-chapter-num">00</span> Introdução: O Despertar</a></li>
-                <li><a href="#cap1"><span class="toc-chapter-num">01</span> A Decisão da Identidade</a></li>
-                <li><a href="#cap2"><span class="toc-chapter-num">02</span> Detox de Ambiente e Mente</a></li>
-                <li><a href="#cap3"><span class="toc-chapter-num">03</span> O Ritual da Manhã</a></li>
-                <li><a href="#cap4"><span class="toc-chapter-num">04</span> Presença Física e Postura</a></li>
-                <li><a href="#cap5"><span class="toc-chapter-num">05</span> A Arte do Silêncio</a></li>
-                <li><a href="#cap6"><span class="toc-chapter-num">06</span> Assinatura Visual</a></li>
-                <li><a href="#cap7"><span class="toc-chapter-num">07</span> Limites Elegantes</a></li>
-                <li><a href="#cap8"><span class="toc-chapter-num">08</span> O Magnetismo Intelectual</a></li>
-                <li><a href="#cap9"><span class="toc-chapter-num">09</span> Sensualidade e Conexão</a></li>
-                <li><a href="#cap10"><span class="toc-chapter-num">10</span> Energia de Protagonista</a></li>
-                <li><a href="#checklist"><span class="toc-chapter-num">Extra</span> Checklist Final</a></li>
+                <li><a href="#intro"><span class="toc-chapter-num">00</span> Introdução</a></li>
+                <li><a href="#cap1"><span class="toc-chapter-num">01</span> O Mito da Invisibilidade</a></li>
+                <li><a href="#cap2"><span class="toc-chapter-num">02</span> Autoconfiança Radical</a></li>
+                <li><a href="#cap3"><span class="toc-chapter-num">03</span> Eliminando a Energia de Desculpa</a></li>
+                <li><a href="#cap4"><span class="toc-chapter-num">04</span> O Poder do Silêncio</a></li>
+                <li><a href="#cap5"><span class="toc-chapter-num">05</span> Limites como Carisma</a></li>
+                <li><a href="#cap6"><span class="toc-chapter-num">06</span> Inteligência Emocional</a></li>
+                <li><a href="#cap7"><span class="toc-chapter-num">07</span> O "Não" Elegante</a></li>
+                <li><a href="#cap8"><span class="toc-chapter-num">08</span> Autoridade Intelectual</a></li>
+                <li><a href="#cap9"><span class="toc-chapter-num">09</span> Networking Magnético</a></li>
+                <li><a href="#cap10"><span class="toc-chapter-num">10</span> Assumindo o Palco</a></li>
+            </ul>
+
+            <div class="toc-section-title">PARTE II: A MECÂNICA (CORPO E VOZ)</div>
+            <ul class="toc-list">
+                <li><a href="#cap11"><span class="toc-chapter-num">11</span> Introdução à Física da Presença</a></li>
+                <li><a href="#cap12"><span class="toc-chapter-num">12</span> Olhar: O Ponto de Conexão</a></li>
+                <li><a href="#cap13"><span class="toc-chapter-num">13</span> Voz: Tom e Cadência</a></li>
+                <li><a href="#cap14"><span class="toc-chapter-num">14</span> Postura: Ocupando Espaço</a></li>
+                <li><a href="#cap15"><span class="toc-chapter-num">15</span> Gestos: Abertura e Controle</a></li>
+                <li><a href="#cap16"><span class="toc-chapter-num">16</span> Semiótica Visual (Estilo)</a></li>
+            </ul>
+
+            <div class="toc-section-title">PARTE III: A PRÁTICA</div>
+            <ul class="toc-list">
+                <li><a href="#cap17"><span class="toc-chapter-num">17</span> O Desafio de 30 Dias</a></li>
             </ul>
         </aside>
 
-        <!-- BOOK CONTENT -->
+        <!-- CONTEÚDO DO LIVRO -->
         <main class="book-content">
             
-            <!-- CAPA VIRTUAL -->
+            <!-- CAPA -->
             <div style="text-align: center; margin-bottom: 80px;">
-                <h1 class="book-title">O Reset Feminino</h1>
-                <p class="book-subtitle">O Guia Prático para se Tornar Irreconhecível em 30 Dias</p>
-                <div style="font-size: 2rem; color: var(--primary-red); margin-top: 20px;"><i class="fas fa-gem"></i></div>
+                <h1 class="book-title">O Protocolo da Presença</h1>
+                <p class="book-subtitle">Torne-se Impossível de Ser Ignorada: Autoridade, Postura e Magnetismo</p>
+                <div style="font-size: 2rem; color: var(--primary-red); margin-top: 20px;"><i class="fas fa-crown"></i></div>
             </div>
 
-            <!-- SUMÁRIO MOBILE (Apenas visível em telas pequenas) -->
+            <!-- MENU MOBILE -->
             <div class="mobile-toc">
-                <h3>Sumário</h3>
+                <h3>Navegação Rápida</h3>
                 <ul>
                     <li><a href="#intro">Introdução</a></li>
-                    <li><a href="#cap1">Cap. 1: Identidade</a></li>
-                    <li><a href="#cap2">Cap. 2: Detox</a></li>
-                    <li><a href="#cap3">Cap. 3: Rituais</a></li>
-                    <li><a href="#cap4">Cap. 4: Presença</a></li>
-                    <li><a href="#cap5">Cap. 5: Silêncio</a></li>
-                    <li><a href="#cap6">Cap. 6: Visual</a></li>
-                    <li><a href="#cap7">Cap. 7: Limites</a></li>
-                    <li><a href="#cap8">Cap. 8: Intelecto</a></li>
-                    <li><a href="#cap9">Cap. 9: Sensualidade</a></li>
-                    <li><a href="#cap10">Cap. 10: Protagonismo</a></li>
+                    <li><a href="#cap1">Parte I: Mentalidade (Caps 1-10)</a></li>
+                    <li><a href="#cap11">Parte II: Mecânica (Caps 11-16)</a></li>
+                    <li><a href="#cap17">Parte III: Desafio 30 Dias</a></li>
                 </ul>
             </div>
 
             <!-- INTRODUÇÃO -->
             <section id="intro" class="chapter">
                 <div class="chapter-header">
-                    <h2>Introdução: Você não está aqui por acaso</h2>
+                    <h2>Introdução: O Fim da Mulher "Invisível"</h2>
                 </div>
-                <p class="drop-cap">A sensação de que você nasceu para ser "mais" não é arrogância. É um chamado. A maioria das mulheres passa a vida silenciando essa voz, tentando caber em caixas pequenas, agradar a todos e se desculpar por existir. Hoje, isso acaba.</p>
-                <p>Este livro não é sobre passar um batom vermelho e fingir confiança. É sobre um reset estrutural na sua autoimagem. É sobre matar a versão antiga de si mesma — aquela que aceita migalhas, que anda de cabeça baixa, que tem medo de brilhar — e construir, tijolo por tijolo, a mulher que você admira.</p>
-                <p>Prepare-se. O processo pode ser desconfortável, mas o resultado é uma mulher magnética, segura e impossível de ignorar.</p>
+                <p class="drop-cap">Você já teve a sensação de falar e não ser ouvida? De entrar em uma sala e sentir que sua energia se dissipou no ar? Muitas mulheres confundem competência com presença. Elas acreditam que se trabalharem duro nos bastidores, serão notadas. Isso é uma mentira.</p>
+                <p>Presença não é sobre ser a mais barulhenta, nem sobre ser agressiva. É uma alquimia sutil entre como você se porta, como você fala e, principalmente, como você se vê. É a arte de alterar a temperatura da sala apenas por estar nela.</p>
+                <p>Este livro não é sobre fingir. É sobre remover as camadas de insegurança que abafam o seu brilho natural. Vamos decodificar a linguagem não-verbal do poder e ensinar você a ocupá-la.</p>
             </section>
 
-            <!-- CAPÍTULO 1 -->
+            <!-- ================= PARTE I: MENTALIDADE ================= -->
+
             <section id="cap1" class="chapter">
                 <div class="chapter-header">
                     <span class="chapter-num">Capítulo 01</span>
-                    <h2>A Decisão da Identidade</h2>
+                    <h2>O Mito da Invisibilidade</h2>
                 </div>
-                <p>O primeiro erro é achar que confiança é um "sentimento". Confiança é uma <strong>decisão de identidade</strong>. Você não "sente" que é segura, você <em>decide</em> ser e age conforme essa decisão até que ela se torne sua realidade.</p>
-                <p>A neurociência chama isso de neuroplasticidade, mas eu chamo de "O Efeito Atriz". Se você acordar amanhã e decidir que é uma mulher de alto valor, como essa mulher escovaria os dentes? O que ela vestiria para ficar em casa? O que ela comeria?</p>
+                <p>A invisibilidade é um hábito aprendido. Em algum momento, nos ensinaram que ocupar pouco espaço era sinônimo de "educação". Que não incomodar era virtude. Para ter presença, você precisa aceitar um fato desconfortável: ser vista implica ser julgada.</p>
                 <div class="highlight-box">
-                    <h3><i class="fas fa-pen-fancy"></i> Exercício: O Alter Ego</h3>
-                    <p>Pegue um caderno e descreva sua versão "Nível 10". Dê um nome a ela se precisar.</p>
-                    <ul>
-                        <li>Como é a postura dela?</li>
-                        <li>O que ela não tolera mais?</li>
-                        <li>Qual o cheiro dela?</li>
-                    </ul>
-                    <p>A partir de agora, em momentos de dúvida, pergunte-se: <em>"O que [Seu Alter Ego] faria nesta situação?"</em></p>
+                    <h3><i class="fas fa-eye"></i> O Risco da Exposição</h3>
+                    <p>Você não pode controlar a narrativa que os outros criam sobre você, mas pode dar a eles o "roteiro" certo. Se você se encolhe, o roteiro é "ela é frágil". Se você se expande, o roteiro é "ela tem autoridade". Escolha o seu script.</p>
                 </div>
             </section>
 
-            <!-- CAPÍTULO 2 -->
             <section id="cap2" class="chapter">
                 <div class="chapter-header">
                     <span class="chapter-num">Capítulo 02</span>
-                    <h2>Detox de Ambiente e Mente</h2>
+                    <h2>Autoconfiança Radical</h2>
                 </div>
-                <p>Você não pode curar no mesmo ambiente em que adoeceu. Para florescer, seu solo precisa ser fértil. Isso significa um detox radical do que drena sua energia vital.</p>
-                <p>Comece pelo digital. Quem você segue no Instagram que te faz sentir inadequada, pobre ou feia? Pare de seguir. O algoritmo é seu servo, não seu mestre. Alimente sua mente apenas com imagens que reforçam a mulher que você quer ser.</p>
-                <p>No ambiente físico: a bagunça é um reflexo do caos interno. Organize seu quarto, jogue fora roupas furadas, cosméticos vencidos e cartas de ex-namorados. Abra espaço para o novo.</p>
+                <p>Confiança não é ter certeza de que você vai acertar. Confiança é ter certeza de que, mesmo se errar, você sobreviverá e lidará com isso com elegância. Pare de buscar validação externa para suas ideias. A pessoa com maior convicção na sala geralmente lidera a sala.</p>
             </section>
 
-            <!-- CAPÍTULO 3 -->
             <section id="cap3" class="chapter">
                 <div class="chapter-header">
                     <span class="chapter-num">Capítulo 03</span>
-                    <h2>O Ritual da Manhã</h2>
+                    <h2>Eliminando a Energia de Desculpa</h2>
                 </div>
-                <p>A forma como você começa seu dia dita a energia das próximas 16 horas. A mulher comum acorda e pega o celular, entregando sua dopamina para notificações de outras pessoas. A mulher magnética começa o dia se servindo primeiro.</p>
-                <p>Não precisa ser uma rotina de 2 horas. Precisa ser intencional. Água, movimento, silêncio e arrumação. Jamais, sob hipótese alguma, comece o dia desleixada. Mesmo que trabalhe em casa, vista-se para a pessoa mais importante da sua vida: você.</p>
+                <p>Observe sua linguagem. Quantas vezes você começa frases com "Desculpe, posso atrapalhar?" ou "Só uma ideiazinha...". Isso é veneno para sua autoridade. Substitua "Desculpe pelo atraso" por "Obrigada pela paciência". Nunca peça desculpas por existir ou por ocupar espaço.</p>
             </section>
 
-            <!-- CAPÍTULO 4 -->
             <section id="cap4" class="chapter">
                 <div class="chapter-header">
                     <span class="chapter-num">Capítulo 04</span>
-                    <h2>Presença Física e Postura</h2>
+                    <h2>O Poder do Silêncio</h2>
                 </div>
-                <div class="quote">"A linguagem corporal grita antes mesmo de você sussurrar."</div>
-                <p>O magnetismo é 80% não-verbal. Observe uma mulher insegura: ombros caídos, olhar evasivo, passos rápidos e apressados, mexendo no cabelo constantemente. Agora visualize uma rainha: movimentos lentos, deliberados, coluna ereta, queixo paralelo ao chão.</p>
-                <p>Ocupe espaço. Não se encolha na cadeira. Mantenha contato visual por 3 segundos a mais do que o confortável. Isso sinaliza ao subconsciente do outro (e ao seu) que você não tem medo de ser vista.</p>
+                <div class="quote">"Quem fala o tempo todo não tem nada a dizer. O poder reside na pausa."</div>
+                <p>A ansiedade nos faz preencher vazios. Mulheres magnéticas usam o silêncio como pontuação. Quando fizer uma pergunta difícil ou declarar seu preço, cale-se. Deixe o silêncio trabalhar a seu favor. O primeiro a falar perde a negociação.</p>
             </section>
 
-            <!-- CAPÍTULO 5 -->
             <section id="cap5" class="chapter">
                 <div class="chapter-header">
                     <span class="chapter-num">Capítulo 05</span>
-                    <h2>A Arte do Silêncio</h2>
+                    <h2>Limites como Carisma</h2>
                 </div>
-                <p>Em um mundo barulhento, o silêncio é luxo. Mulheres inseguras sentem a necessidade de preencher cada vácuo da conversa com palavras, justificativas e risadas nervosas. Isso transmite ansiedade.</p>
-                <p>Aprenda a fazer pausas. Quando lhe fizerem uma pergunta, respire antes de responder. Quando alguém disser algo desagradável, o silêncio absoluto olhando nos olhos da pessoa é mais poderoso que qualquer xingamento. O mistério é magnético porque convida o outro a querer desvendar você.</p>
+                <p>Existe um mito de que a mulher "boazinha" é a mais querida. Errado. A mulher respeitada é a que tem limites claros. Dizer "não" protege sua energia. Quando você valoriza seu tempo, os outros automaticamente começam a valorizá-lo também. A disponibilidade excessiva barateia sua presença.</p>
             </section>
 
-            <!-- CAPÍTULO 6 -->
             <section id="cap6" class="chapter">
                 <div class="chapter-header">
                     <span class="chapter-num">Capítulo 06</span>
-                    <h2>Assinatura Visual</h2>
+                    <h2>Inteligência Emocional</h2>
                 </div>
-                <p>Estilo não é sobre marcas caras, é sobre coerência. Sua roupa informa ao mundo como você deseja ser tratada. Se você anda sempre de moletom e cabelo preso de qualquer jeito, está dizendo "eu não importo".</p>
-                <p>Desenvolva um uniforme de poder. Descubra quais cores iluminam seu rosto. Tenha uma assinatura: pode ser um perfume marcante, acessórios dourados, ou lábios sempre hidratados. A beleza é uma forma de polidez consigo mesma.</p>
-                <div class="highlight-box">
-                    <h3><i class="fas fa-crown"></i> Regra de Ouro</h3>
-                    <p>Nunca saia de casa de uma forma que você teria vergonha de encontrar sua maior referência de sucesso ou seu pior inimigo.</p>
-                </div>
+                <p>Perder a compostura é perder a autoridade. A mulher que possui presença não é fria, ela é regulada. Ela responde, não reage. Em situações de tensão, respire. Quem mantém a calma enquanto todos perdem a cabeça se torna, instantaneamente, a líder da situação.</p>
             </section>
 
-            <!-- CAPÍTULO 7 -->
             <section id="cap7" class="chapter">
                 <div class="chapter-header">
                     <span class="chapter-num">Capítulo 07</span>
-                    <h2>Limites Elegantes (O Poder do "Não")</h2>
+                    <h2>O "Não" Elegante</h2>
                 </div>
-                <p>Uma mulher boazinha é uma mulher exausta. O magnetismo requer energia, e você não tem energia se está sempre disponível para resolver os problemas de todo mundo.</p>
-                <p>Dizer "não" é uma frase completa. Você não precisa inventar uma desculpa mentirosa. "Não poderei ir", "Isso não funciona para mim agora", "Obrigada pelo convite, mas hoje preciso descansar". Limites não afastam as pessoas certas; eles afastam os aproveitadores e inspiram respeito nos que ficam.</p>
+                <p>Você não precisa ser ríspida para negar algo. "Infelizmente não poderei acomodar esse pedido agora" é uma frase completa. Não justifique excessivamente. A justificativa soa como culpa. O "não" firme e polido é o ápice da sofisticação profissional.</p>
             </section>
 
-            <!-- CAPÍTULO 8 -->
             <section id="cap8" class="chapter">
                 <div class="chapter-header">
                     <span class="chapter-num">Capítulo 08</span>
-                    <h2>O Magnetismo Intelectual</h2>
+                    <h2>Autoridade Intelectual</h2>
                 </div>
-                <p>Beleza atrai atenção, conteúdo retém interesse. Não seja apenas um rosto bonito. Cultive sua mente. Tenha opiniões (embasadas), leia sobre assuntos variados, tenha hobbies que não envolvam telas.</p>
-                <p>Uma mulher interessante é uma mulher interessada. Quando você conversa com paixão sobre algo que estuda ou pratica, seus olhos brilham de uma forma que nenhuma maquiagem consegue replicar. Torne-se um oásis de conversas estimulantes em um deserto de futilidades.</p>
+                <p>Beleza e estilo abrem a porta, mas é o intelecto que mantém você na sala. Mantenha-se informada. Tenha opiniões formadas (e fundamentadas). Não tenha medo de discordar respeitosamente. O consenso é seguro, mas o contraponto inteligente é memorável.</p>
             </section>
 
-            <!-- CAPÍTULO 9 -->
             <section id="cap9" class="chapter">
                 <div class="chapter-header">
                     <span class="chapter-num">Capítulo 09</span>
-                    <h2>Sensualidade e Conexão</h2>
+                    <h2>Networking Magnético</h2>
                 </div>
-                <p>A verdadeira sensualidade não é para o olhar masculino; é para o seu próprio prazer de habitar seu corpo. É sentir a textura do lençol na pele, saborear uma comida devagar, dançar sozinha na sala.</p>
-                <p>Quando você está conectada com seus sentidos, você se torna "viva". Essa vitalidade é intoxicante. Saia da cabeça (racional, preocupada) e desça para o corpo. Toque sua própria pele com carinho ao passar creme. A mulher que se deseja é desejada pelo mundo.</p>
+                <p>Pare de tentar entregar cartões de visita para todos. Networking real é sobre conexão, não transação. Seja curiosa sobre o outro. Faça perguntas que ninguém faz. Em vez de "o que você faz?", pergunte "o que te empolga atualmente?". Seja a pessoa mais interessante interessando-se genuinamente.</p>
             </section>
 
-            <!-- CAPÍTULO 10 -->
             <section id="cap10" class="chapter">
                 <div class="chapter-header">
                     <span class="chapter-num">Capítulo 10</span>
-                    <h2>Energia de Protagonista</h2>
+                    <h2>Assumindo o Palco</h2>
                 </div>
-                <p>Chegamos ao fim, que é apenas o começo. Assumir a energia de protagonista significa parar de esperar ser salva. Ninguém virá te descobrir. É você por você.</p>
-                <p>Romantize sua vida. Coloque a mesa bonita para jantar sozinha. Compre flores para si mesma. Celebre pequenas vitórias. A vida acontece agora. Não espere perder 5kg ou ser promovida para se sentir digna. Aja como a mulher dos seus sonhos hoje, e amanhã o mundo terá que se ajustar à sua nova frequência.</p>
+                <p>A vida é um palco e você está sempre "em cena" quando sai de casa. Isso não significa atuar, significa ter intencionalidade. Ao entrar em uma reunião, em um evento ou em um jantar, defina sua intenção: "Hoje eu serei a personificação da calma e da competência".</p>
             </section>
 
-            <!-- EXTRAS -->
-            <section id="checklist" class="chapter" style="background-color: var(--bg-blush); padding: 40px; border-radius: 8px;">
-                <h2 style="text-align: center; margin-bottom: 30px; font-size: 1.8rem;">Checklist do Reset Diário</h2>
+            <!-- ================= PARTE II: A MECÂNICA (CORPO E VOZ) ================= -->
+            
+            <section id="cap11" class="chapter">
+                <div class="chapter-header">
+                    <span class="chapter-num">Capítulo 11</span>
+                    <h2>Introdução à Física da Presença</h2>
+                </div>
+                <p class="drop-cap">A mentalidade muda a vibração, mas a mecânica muda a percepção imediata. Estudos mostram que avaliamos a competência de alguém em milissegundos, baseados apenas na postura.</p>
+                <p>Nesta seção, vamos tratar do seu corpo como um instrumento de comunicação. Vamos ajustar sua "afinação" para que sua mensagem chegue antes mesmo de você abrir a boca. São micro-ajustes físicos com macro-resultados sociais.</p>
+            </section>
+
+            <section id="cap12" class="chapter">
+                <div class="chapter-header">
+                    <span class="chapter-num">Capítulo 12</span>
+                    <h2>Olhar: O Ponto de Conexão</h2>
+                </div>
+                <p>O contato visual é a ferramenta mais rápida para estabelecer dominância benevolente ou submissão. Evitar o olhar comunica medo ou desinteresse.</p>
                 
-                <div class="checklist-item">
-                    <div class="check-circle"></div>
-                    <div><strong>Manhã:</strong> Não tocou no celular na primeira hora do dia.</div>
+                <div class="highlight-box">
+                    <div class="recipe-title">1. A Técnica do Triângulo Invertido</div>
+                    <p>Para interações profissionais e de negócios.</p>
+                    <ul>
+                        <li><strong>Onde focar:</strong> Imagine um triângulo ligando os dois olhos e o meio da testa da pessoa.</li>
+                        <li><strong>Efeito:</strong> Manter o olhar nessa zona comunica seriedade e análise intelectual. Evita que o olhar desça para a boca (que comunica intimidade/social).</li>
+                        <li><strong>Prática:</strong> Use na próxima reunião séria. Você notará que será interrompida com menos frequência.</li>
+                    </ul>
                 </div>
-                <div class="checklist-item">
-                    <div class="check-circle"></div>
-                    <div><strong>Visual:</strong> Arrumou-se sentindo-se bonita e confortável.</div>
+
+                <div class="highlight-box">
+                    <div class="recipe-title">2. O "Olhar Suave"</div>
+                    <p>Para conexão social e empatia.</p>
+                    <ul>
+                        <li><strong>Técnica:</strong> Relaxe os músculos ao redor dos olhos. Não encare fixamente ("hard focus"). Pisque naturalmente.</li>
+                        <li><strong>Aplicação:</strong> Quando alguém estiver compartilhando algo pessoal. Isso cria um espaço seguro e magnético.</li>
+                    </ul>
                 </div>
-                <div class="checklist-item">
-                    <div class="check-circle"></div>
-                    <div><strong>Postura:</strong> Checou a coluna e relaxou os ombros 3x ao dia.</div>
+            </section>
+
+            <section id="cap13" class="chapter">
+                <div class="chapter-header">
+                    <span class="chapter-num">Capítulo 13</span>
+                    <h2>Voz: Tom e Cadência</h2>
                 </div>
-                <div class="checklist-item">
-                    <div class="check-circle"></div>
-                    <div><strong>Mente:</strong> Leu pelo menos 5 páginas ou aprendeu algo novo.</div>
+                <p>Muitas mulheres, inconscientemente, agudizam a voz para parecerem inofensivas ou usam o "vocal fry" (aquele chiado no final da frase). Vamos corrigir isso.</p>
+
+                <div class="highlight-box">
+                    <div class="recipe-title">1. A Respiração Diafragmática</div>
+                    <p>Uma voz projetada nasce no estômago, não na garganta.</p>
+                    <ul>
+                        <li><strong>Exercício:</strong> Coloque a mão na barriga. Inspire fazendo a barriga estufar. Fale "Bom dia" enquanto solta o ar, sentindo o som vibrar no peito.</li>
+                        <li><strong>Resultado:</strong> Uma voz mais grave, aveludada e autoritária.</li>
+                    </ul>
                 </div>
-                <div class="checklist-item">
-                    <div class="check-circle"></div>
-                    <div><strong>Noite:</strong> Fez um ritual de desconexão e gratidão.</div>
+
+                <div class="highlight-box">
+                    <div class="recipe-title">2. Elimine a Entonação de Pergunta</div>
+                    <p>O vício de subir o tom no final de uma afirmação ("Eu acho que é isso?").</p>
+                    <ul>
+                        <li><strong>Ajuste:</strong> Imagine que suas frases são flechas que precisam cravar no chão ao final. Termine com tom descendente. Isso comunica: "Eu sei o que estou dizendo".</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="cap14" class="chapter">
+                <div class="chapter-header">
+                    <span class="chapter-num">Capítulo 14</span>
+                    <h2>Postura: Ocupando Espaço</h2>
+                </div>
+                <p>O medo nos faz encolher. Ombros para frente, pernas cruzadas apertadas, braços junto ao corpo. A biologia lê isso como "presa".</p>
+
+                <div class="highlight-box">
+                    <div class="recipe-title">1. A Técnica do Fio de Ouro</div>
+                    <p>Para correção instantânea de postura.</p>
+                    <ul>
+                        <li><strong>Visualização:</strong> Imagine um fio dourado saindo do topo da sua cabeça, puxando você em direção ao céu.</li>
+                        <li><strong>Efeito:</strong> Seu pescoço alonga, o queixo fica paralelo ao chão e a coluna se alinha. É a postura da realeza.</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <div class="recipe-title">2. Ocupação de Mesa</div>
+                    <p>Em reuniões sentadas.</p>
+                    <ul>
+                        <li><strong>Ação:</strong> Não deixe seus braços colados ao corpo. Apoie os antebraços na mesa. Espalhe suas anotações levemente. Reivindique seu território físico.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="cap15" class="chapter">
+                <div class="chapter-header">
+                    <span class="chapter-num">Capítulo 15</span>
+                    <h2>Gestos: Abertura e Controle</h2>
+                </div>
+                <p>Mãos inquietas distraem. Mãos escondidas geram desconfiança. Suas mãos devem ilustrar suas palavras.</p>
+
+                <div class="highlight-box">
+                    <div class="recipe-title">1. A "Caixa de Poder"</div>
+                    <p>A zona entre seus ombros e seu umbigo.</p>
+                    <ul>
+                        <li><strong>Regra:</strong> Mantenha seus gestos dentro dessa caixa. Gestos muito amplos (acima dos ombros) parecem caóticos. Gestos muito baixos passam despercebidos.</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <div class="recipe-title">2. Palmas à Mostra</div>
+                    <p>Sinal universal de honestidade.</p>
+                    <ul>
+                        <li><strong>Dica:</strong> Ao explicar algo ou negociar, mostre as palmas das mãos ocasionalmente. Isso desarma a defesa do interlocutor inconscientemente.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="cap16" class="chapter">
+                <div class="chapter-header">
+                    <span class="chapter-num">Capítulo 16</span>
+                    <h2>Semiótica Visual (Estilo)</h2>
+                </div>
+                <p>Não é sobre moda, é sobre semiótica. O que suas roupas dizem antes de você falar? Tecidos estruturados comunicam rigidez e poder. Tecidos fluidos comunicam acessibilidade e criatividade.</p>
+
+                <div class="highlight-box">
+                    <div class="recipe-title">1. O Ponto Focal</div>
+                    <p>Direcione o olhar do outro.</p>
+                    <ul>
+                        <li><strong>Estratégia:</strong> Use um elemento (colar, batom, lenço) perto do rosto para manter a atenção nos seus olhos e na sua boca enquanto fala.</li>
+                    </ul>
+                </div>
+
+                <p><strong>Regra de Ouro:</strong> Esteja sempre vestida para a posição que você quer ocupar daqui a 5 anos, não para a que você tem hoje.</p>
+            </section>
+
+            <!-- ================= PARTE III: PRÁTICA ================= -->
+
+            <section id="cap17" class="chapter" style="background-color: var(--bg-blush); padding: 40px; border-radius: 8px;">
+                <div class="chapter-header">
+                    <span class="chapter-num">Capítulo 17</span>
+                    <h2>O Desafio de 30 Dias de Presença</h2>
+                </div>
+                <p>Teoria sem prática é apenas filosofia. Vamos transformar esses conceitos em memória muscular. O objetivo é torná-la confortável com o desconforto de ser vista.</p>
+
+                <div style="margin-top: 30px;">
+                    <!-- SEMANA 1 -->
+                    <div class="checklist-day">
+                        <h4>SEMANA 1: AUDITORIA INTERNA (Mentalidade)</h4>
+                        <div class="check-item"><div class="check-box"></div> <div>Eliminar a palavra "desculpa" de e-mails e falas (a menos que seja um erro real).</div></div>
+                        <div class="check-item"><div class="check-box"></div> <div>Fazer o exercício do "Fio de Ouro" sempre que passar por uma porta.</div></div>
+                        <div class="check-item"><div class="check-box"></div> <div>Gravar um áudio de 1 minuto e ouvir: onde seu tom falha?</div></div>
+                        <div class="check-item"><div class="check-box"></div> <div>Listar 3 situações onde você se diminui e reescrever o roteiro mental.</div></div>
+                    </div>
+
+                    <!-- SEMANA 2 -->
+                    <div class="checklist-day">
+                        <h4>SEMANA 2: OCUPAÇÃO DE ESPAÇO (Físico)</h4>
+                        <div class="check-item"><div class="check-box"></div> <div>Em reuniões/jantares, sentar-se em posição central ou de destaque.</div></div>
+                        <div class="check-item"><div class="check-box"></div> <div>Manter contato visual (Triângulo Invertido) até a outra pessoa desviar.</div></div>
+                        <div class="check-item"><div class="check-box"></div> <div>Falar mais devagar do que você acha confortável.</div></div>
+                        <div class="check-item"><div class="check-box"></div> <div>Não cruzar os braços em momentos de tensão.</div></div>
+                    </div>
+
+                    <!-- SEMANA 3 -->
+                    <div class="checklist-day">
+                        <h4>SEMANA 3: COMUNICAÇÃO DE ALTO IMPACTO (Verbal)</h4>
+                        <div class="check-item"><div class="check-box"></div> <div>Dar uma opinião contrária em um grupo de forma polida e firme.</div></div>
+                        <div class="check-item"><div class="check-box"></div> <div>Praticar o silêncio de 3 segundos antes de responder perguntas complexas.</div></div>
+                        <div class="check-item"><div class="check-box"></div> <div>Receber um elogio apenas com "Obrigada", sem se justificar ou diminuir o feito.</div></div>
+                        <div class="check-item"><div class="check-box"></div> <div>Falar o preço dos seus serviços/hora sem gaguejar ou justificar.</div></div>
+                    </div>
+
+                    <!-- SEMANA 4 -->
+                    <div class="checklist-day">
+                        <h4>SEMANA 4: MAGNETISMO SOCIAL (Integração)</h4>
+                        <div class="check-item"><div class="check-box"></div> <div>Ir a um local novo sozinha e iniciar uma conversa com um estranho.</div></div>
+                        <div class="check-item"><div class="check-box"></div> <div>Vestir sua melhor "roupa de poder" em um dia comum de trabalho.</div></div>
+                        <div class="check-item"><div class="check-box"></div> <div>Dizer um "não" necessário para proteger sua agenda.</div></div>
+                        <div class="check-item"><div class="check-box"></div> <div>Celebrar sua evolução reconhecendo sua nova postura no espelho.</div></div>
+                    </div>
                 </div>
                 
-                <p style="text-align: center; margin-top: 30px; font-size: 0.9rem;"><em>Imprima isso ou anote no seu planner. A consistência é o segredo da transformação.</em></p>
+                <h3 style="text-align: center; margin-top: 40px; font-size: 1.2rem; color: var(--primary-red);">Ritual de Ancoragem (Pré-Eventos Importantes)</h3>
+                <ul style="list-style: none; padding: 20px; background: #fff; border-radius: 8px; font-size: 0.9rem;">
+                    <li style="margin-bottom: 10px;"><strong>1. Respiração:</strong> 5 ciclos profundos diafragmáticos para baixar o cortisol.</li>
+                    <li style="margin-bottom: 10px;"><strong>2. Power Pose:</strong> 2 minutos em pé, mãos na cintura ou braços em V (no banheiro ou privado).</li>
+                    <li style="margin-bottom: 10px;"><strong>3. Intenção:</strong> Definir mentalmente: "Minha presença aqui é necessária e valiosa".</li>
+                    <li style="margin-bottom: 10px;"><strong>4. Entrada:</strong> Pausa na porta. Olhar o ambiente. Entrar devagar.</li>
+                </ul>
             </section>
 
             <!-- ENCERRAMENTO -->
             <div style="text-align: center; margin-top: 60px;">
-                <p style="font-size: 1.1rem;">Você completou a leitura. Agora, inicie a vivência.</p>
-                <h3 style="font-family: 'Brush Script MT', cursive; font-size: 2.5rem; color: var(--primary-red); margin-top: 10px;">Bem-vinda à sua nova vida.</h3>
+                <p style="font-size: 1.1rem;">A invisibilidade era segura, mas o seu potencial exige palco.</p>
+                <h3 style="font-family: 'Brush Script MT', cursive; font-size: 2.5rem; color: var(--primary-red); margin-top: 10px;">O mundo está assistindo. Lidere.</h3>
                 <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; font-size: 0.8rem; color: #999;">
-                    &copy; 2024 Divinely Feminine. Todos os direitos reservados.
+                    &copy; 2024 Presence Protocol. Todos os direitos reservados.
                 </div>
             </div>
 
